@@ -1,7 +1,20 @@
 #!/usr/bin/env python
 
 import sys
-import gnupg
+try:
+   import gnupg
+except ImportError as e:
+   sys.stderr.write("failed to load module: %s" % str(e))
 
 
-sys.exit(0)
+def main():
+   print ("Successfully imported GNUPG")
+   
+   my_gpg = gnupg.GPG()
+   
+   del my_gpg
+
+   sys.exit(0)
+
+if __name__ == "__main__":
+   main()
